@@ -26,15 +26,52 @@ public class XMLReader {
             for (int i = 0; i < children.getLength(); i++) {
                 if (children.item(i).getNodeType() == Node.ELEMENT_NODE) {
                     Element elem = (Element) children.item(i);
-                    // If your document is namespace aware use localName
-                    //String localName = elem.getLocalName();
+
+
                     // Tag name returns the localName and the namespace prefix
                     String tagName = elem.getTagName();
+
                     String itemInfo = elem.getTextContent();
+
                     System.out.println(tagName + " " + itemInfo);
                     // do stuff with the children
                 }
             }
+
+
+
+//                for (int i = 0; i < children.getLength(); i++) {
+
+
+                Node no1 = (Node) children.item(0);
+
+
+
+//                Element elem = (Element) children.item(0);
+//
+//                    if (children.item(i).getNodeType() == Node.ELEMENT_NODE) {
+//                        Element elem = (Element) children.item(i);
+//
+////                        String city = elem.getElementsByTagName("city").item(i).getTextContent();
+////                        System.out.println("Your location is " + city);
+//
+////                        String cityState = elem.getElementsByTagName("city").item(i).getTextContent();
+//
+//                        String city = elem.getAttribute("city");
+//
+//                        System.out.println("This is a test to print city " + city);
+//
+//                        elem.
+//
+//                        if (elem.getTagName() == "city") {
+//                            System.out.println("This is a city tag name test");
+//                            System.out.println("Your location is " + elem.getTextContent());
+//
+//
+//                        }
+
+
+
 
         } catch (Exception ex) {
             ex.printStackTrace();
