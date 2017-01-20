@@ -1,47 +1,42 @@
 package weather;
 
+//import java.net.MalformedURLException;
+//import java.util.Scanner;
+//import java.net.URL;
+import java.net.*;
+import java.io.*;
 
-
-import org.w3c.dom.Document;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.MalformedURLException;
-import java.net.URL;
 
 public class XMLReader {
 
 
+        public static void Reader() throws IOException {
 
-    public static void readIn() throws IOException {
-
-        URL xmlUrl = new URL("http://api.wunderground.com/api/184245b00544774c/conditions/q/NJ/Manahawkin.xml");
-        InputStream in = xmlUrl.openStream();
-        Document doc = parse(in);
-
-
-
-    }
-
-
-    public static Document parse (InputStream is) {
-        Document ret = null;
-        DocumentBuilderFactory domFactory;
-        DocumentBuilder builder;
-
+        URL oracle = null;
         try {
-            domFactory = DocumentBuilderFactory.newInstance();
-            domFactory.setValidating(false);
-            domFactory.setNamespaceAware(false);
-            builder = domFactory.newDocumentBuilder();
+            oracle = new URL("http://api.wunderground.com/api/184245b00544774c/conditions/q/NJ/Manahawkin.xml");
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        BufferedReader in = new BufferedReader(
+                    new InputStreamReader(oracle.openStream()));
 
-            ret = builder.parse(is);
+            String inputLine;
+        try {
+            while ((inputLine = in.readLine()) != null)
+                System.out.println(inputLine);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        catch (Exception ex) {
-            System.out.println("unable to load XML: " + ex);
+        try {
+            in.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        return ret;
     }
+
+
 }
+
+
+
