@@ -4,14 +4,16 @@ package weather;
 import com.sun.org.apache.xerces.internal.parsers.DOMParser;
 import org.w3c.dom.*;
 import org.xml.sax.InputSource;
-import java.net.*;
+import org.xml.sax.SAXException;
 
+import java.io.IOException;
+import java.net.*;
 
 
 public class XMLReader {
 
 
-    public static void parseWeather(String URL) {
+    public void parseWeather(String URL) {
         DOMParser parser = new DOMParser();
 
         try {
@@ -39,47 +41,52 @@ public class XMLReader {
             }
 
 
-
-//                for (int i = 0; i < children.getLength(); i++) {
-
-
-                Node no1 = (Node) children.item(0);
+            for (int i = 0; i < children.getLength(); i++) {
 
 
-
+//                Node no1 = (Node) children.item(0);
+//
+//
+//
 //                Element elem = (Element) children.item(0);
-//
-//                    if (children.item(i).getNodeType() == Node.ELEMENT_NODE) {
-//                        Element elem = (Element) children.item(i);
-//
-////                        String city = elem.getElementsByTagName("city").item(i).getTextContent();
-////                        System.out.println("Your location is " + city);
-//
-////                        String cityState = elem.getElementsByTagName("city").item(i).getTextContent();
-//
-//                        String city = elem.getAttribute("city");
-//
-//                        System.out.println("This is a test to print city " + city);
-//
-//                        elem.
-//
-//                        if (elem.getTagName() == "city") {
-//                            System.out.println("This is a city tag name test");
-//                            System.out.println("Your location is " + elem.getTextContent());
-//
-//
-//                        }
+
+                if (children.item(i).getNodeType() == Node.ELEMENT_NODE) {
+                    Element elem = (Element) children.item(i);
+
+//                        String city = elem.getElementsByTagName("city").item(i).getTextContent();
+//                        System.out.println("Your location is " + city);
+
+//                        String cityState = elem.getElementsByTagName("city").item(i).getTextContent();
+
+                    String city = elem.getAttribute("city");
 
 
+                    if (elem.getTagName() == "city") {
+                        System.out.println("This is a city tag name test");
+                        System.out.println("Your location is " + elem.getTextContent());
+                        Information.setStateName(elem.getTextContent());
 
 
-        } catch (Exception ex) {
-            ex.printStackTrace();
+                    }
+
+
+                }
+            }
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (SAXException e) {
+            e.printStackTrace();
+
         }
+
     }
 
 
+
 }
+
 
 
 
