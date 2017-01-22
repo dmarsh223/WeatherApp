@@ -1,12 +1,12 @@
 package weather;
 
 
-public class Information {
+public class Location {
 
     private String townName;
     private String stateName;
     private double elevation;
-    private int zipCode;
+    private String zipCode;
 
     public String getTownName() {
         return townName;
@@ -32,11 +32,24 @@ public class Information {
         this.elevation = elevation;
     }
 
-    public int getZipCode() {
+    public String getZipCode() {
         return zipCode;
     }
 
-    public void setZipCode(int zipCode) {
+    public void setZipCode(String zipCode) {
         this.zipCode = zipCode;
     }
+
+    public void returnInfo(){
+
+        String yourCity = "Your city is " + getTownName();
+        System.out.println(yourCity);
+        String yourState = "Your state is " + getStateName();
+        System.out.println(yourState);
+        String yourElevation = "Your elevation is " + getElevation();
+        System.out.println(yourElevation);
+        String yourZip = "Your zip is " + getZipCode();
+        System.out.println(yourZip);
+    }
 }
+
