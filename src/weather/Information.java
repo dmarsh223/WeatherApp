@@ -1,8 +1,6 @@
 package weather;
 
-/**
- * Created by danma on 1/22/2017.
- */
+
 public class Information {
 
     private String townName;

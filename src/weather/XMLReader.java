@@ -40,6 +40,7 @@ public class XMLReader {
                 }
             }
 
+            Information myHome = new Information();
 
             for (int i = 0; i < children.getLength(); i++) {
 
@@ -58,13 +59,15 @@ public class XMLReader {
 
 //                        String cityState = elem.getElementsByTagName("city").item(i).getTextContent();
 
-                    String city = elem.getAttribute("city");
+
 
 
                     if (elem.getTagName() == "city") {
                         System.out.println("This is a city tag name test");
                         System.out.println("Your location is " + elem.getTextContent());
-                        Information.setStateName(elem.getTextContent());
+
+                        myHome.setStateName(elem.getTextContent());
+                        System.out.println(myHome.getStateName());
 
 
                     }
