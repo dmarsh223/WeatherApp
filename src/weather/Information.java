@@ -85,6 +85,8 @@ public class Information {
         this.windDirection = windDirection;
     }
 
+
+    //testing parsing from XML file for correct information
     public void returnInfo(){
 
         String yourCity = "Your city is " + getTownName();
