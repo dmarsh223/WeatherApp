@@ -13,9 +13,8 @@ import java.io.IOException;
 import java.net.URL;
 
 public class Parser {
-    Information manahawkin = new Information();
 
-    public void newParse() {
+    public void newParse(Information manahawkin) {
 
         //xmlReader
         DOMParser parser = new DOMParser();
@@ -83,9 +82,5 @@ public class Parser {
                 }
             }
         }
-
-    public void testOutput(){
-        manahawkin.returnInfo();
-    }
 
 }
