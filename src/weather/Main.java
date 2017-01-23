@@ -16,7 +16,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
 
 
-        Location manahawkin = new Location();
+        Information manahawkin = new Information();
 
         //xmlReader
         DOMParser parser = new DOMParser();
@@ -28,9 +28,9 @@ public class Main {
 
             Document doc = parser.getDocument();
 
+            //this pulls elements from the child display location for location information
             Node locationInfo = doc.getElementsByTagName("display_location").item(0);
             NodeList childrenLocation = locationInfo.getChildNodes();
-
 
             for (int i = 0; i < childrenLocation.getLength(); i++) {
 
@@ -49,8 +49,29 @@ public class Main {
                     if (elem.getTagName() == "zip") {
                         manahawkin.setZipCode(elem.getTextContent());
                     }
+                }
+            }
+            //this pull elements from the child current_observation for current weather information
+            Node WeatherInfo = doc.getElementsByTagName("current_observation").item(0);
+            NodeList childrenWeather = WeatherInfo.getChildNodes();
 
+            for (int i = 0; i < childrenWeather.getLength(); i++) {
 
+                if (childrenWeather.item(i).getNodeType() == Node.ELEMENT_NODE) {
+                    Element elem = (Element) childrenWeather.item(i);
+
+                    if (elem.getTagName() == "observation_time") {
+                        manahawkin.setObservationTime(elem.getTextContent());
+                    }
+                    if (elem.getTagName() == "state") {
+                        manahawkin.setStateName(elem.getTextContent());
+                    }
+                    if (elem.getTagName() == "elevation") {
+                        manahawkin.setElevation(Double.parseDouble(elem.getTextContent()));
+                    }
+                    if (elem.getTagName() == "zip") {
+                        manahawkin.setZipCode(elem.getTextContent());
+                    }
                 }
             }
 
