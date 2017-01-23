@@ -1,6 +1,5 @@
 package weather;
 
-
 public class Information {
 
     private String townName;
@@ -85,7 +84,6 @@ public class Information {
         this.windDirection = windDirection;
     }
 
-
     //testing parsing from XML file for correct information
     public void returnInfo(){
 
@@ -99,6 +97,11 @@ public class Information {
         System.out.println(yourZip);
         String obsTime = "The observed time for the weather was " + getObservationTime();
         System.out.println(obsTime);
+
+        System.out.println("The current conditions are " + getCurrentConditions());
+        System.out.println("The temperature is " + getTemperatureF() + " F");
+        System.out.println("The wind is from the " + getWindDirection() +
+        " at " + getWindSpeed() + " MPH");
     }
 }
 

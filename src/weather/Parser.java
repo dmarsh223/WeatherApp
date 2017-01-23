@@ -17,12 +17,8 @@ public class Parser {
 
     public void newParse() {
 
-
-
-
         //xmlReader
         DOMParser parser = new DOMParser();
-
 
             try {
                 parser.parse(new InputSource(new URL(("http://api.wunderground.com/api/184245b00544774c/conditions/q/NJ/Manahawkin.xml")).openStream()));
@@ -72,20 +68,21 @@ public class Parser {
                     if (elem.getTagName() == "observation_time") {
                         manahawkin.setObservationTime(elem.getTextContent());
                     }
-                    if (elem.getTagName() == "state") {
-                        manahawkin.setStateName(elem.getTextContent());
+                    if (elem.getTagName() == "weather") {
+                        manahawkin.setCurrentConditions(elem.getTextContent());
                     }
-                    if (elem.getTagName() == "elevation") {
-                        manahawkin.setElevation(Double.parseDouble(elem.getTextContent()));
+                    if (elem.getTagName() == "temp_f") {
+                        manahawkin.setTemperatureF(elem.getTextContent());
                     }
-                    if (elem.getTagName() == "zip") {
-                        manahawkin.setZipCode(elem.getTextContent());
+                    if (elem.getTagName() == "wind_mph") {
+                        manahawkin.setWindSpeed(Double.parseDouble(elem.getTextContent()));
+                    }
+                    if (elem.getTagName() == "wind_dir") {
+                        manahawkin.setWindDirection(elem.getTextContent());
                     }
                 }
             }
-
         }
-
 
     public void testOutput(){
         manahawkin.returnInfo();
